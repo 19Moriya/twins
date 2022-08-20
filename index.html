@@ -1,25 +1,28 @@
-<!DOCTYPE html><html><head><meta charset="utf-8">
-<title>TWINS LOG</title><meta charset="utf-8">
-
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Twins Map</title>
 <style>
-.fix-01{background:#CCC;left:0;line-height:1;position:fixed;top:0;width:100%;
-    z-index:100;text-align:center;padding:1rem;}
-.map_wrap {position:relative;width:100%;padding-top:56.25%; /*幅56.25%を高さ*/
-    border: 1px solid #CCC;margin-top:60px;}
-.map_wrap .gmap {position:absolute;width:100%; /* 親コンテナの幅いっぱいに表示*/
-    height:100%;top:0;left:0;} 
+a {outline: none;text-decoration: none;} a:link { color: #615D5C} 
+a:visited { color: #615D5C;} a:active { color: #615D5C}
 
-a {outline: none;text-decoration: none;} a:link { color: #000; }
-a:visited { color: #000; } a:active { color: #000; }
+.fix-01{background:#E6E6E7;left:0;line-height:1;position:fixed;top:0;
+	width:100%;z-index:100;text-align:center;padding:1rem; }
+.map_wrap {position:relative; margin-left:60px;margin-right:60px;padding-top:45%;
+	border: 1px solid #CCC;margin-top:100px;}
+.map_wrap .gmap {position:absolute;width:100%;height:100%;top:0;left:0;} 
 
 ul {display:flex;}
-.menu {position:fixed;left:0;bottom:0;background:rgb(247, 247, 247);width:100%;}
+.menu {position:fixed;left:0;bottom:0;background:#E6E6E7;width:100%;}
 .menu li {display:table;table-layout:fixed;width: 100%;padding: 5px;list-style: none;text-align: center;}
-.menu a span {display: block;font-size: 4px;}.baby{color: #d939cd;}
-.restaurant{color: #F55555}.coffee{color: #F8D800}.shop{color: #32CCBC}
-.milk{color: #7367F0}.play{color: #0396FF}.trip{color: #000DFF}
+.menu a span {display: block;font-size: 4px;}.restaurant{color: #d939cd;}
+.baby{color: #F55555}.coffee{color: #F8D800}.shop{color: #32CCBC}
+.trip{color: #7367F0}.milk{color: #0396FF}.play{color: #000DFF}
+.home {position:fixed; left:100px; color: #615D5C; padding-top: 15px;}
+.Kanri {position:fixed; right:100px; color: #615D5C; padding-top: 15px;}
 
-</style></head><header class="fix-01"><a href="index.html">TWINS LOG</a></header>
+</style></head><header class="fix-01"><a href="index.html"><i class="fa-solid fa-house fa-lg home"></i></a>
+<a href="index.html"><img src="img/Twins.png" alt="Twins" width="60" height="33">
+<img src="img/Map.png" alt="Map" width="60" height="33"></a>
+<a href="#"><i class="fa-solid fa-user fa-lg Kanri"></i></a></header>
+
 <body>
 <div class="map_wrap"><div id="gmap" class="gmap"></div></div>
       
@@ -33,9 +36,11 @@ var marker = new google.maps.Marker({position: {lat:35.68, lng:139.76},
 	map:map,animation:google.maps.Animation.DROP,icon:{url: "img/aka.png",
     scaledSize: new google.maps.Size(30, 30)},});
 var infoWindow = new google.maps.InfoWindow({
-	content: '<a href="aka1-index.php" target="_blank" style="display:inline-block">アカチャンホンポ 武蔵小杉グランツリー店</a>'});
+	content: '<a href="aka1-index.php" style="display:inline-block">アカチャンホンポ 武蔵小杉グランツリー店</a>'});
 google.maps.event.addListener(marker, 'click', function() { //マーカークリック動作
 	infoWindow.open(map, marker); });                       //情報ウィンドウを開く
+
+
 
 
 
@@ -47,21 +52,13 @@ google.maps.event.addListener(marker, 'click', function() { //マーカークリ
 <script src="https://kit.fontawesome.com/b2cf6ccdb7.js" crossorigin="anonymous"></script>
 </body>
 <ul class="menu">
-<li><a href="#"><i class="fa-solid fa-baby-carriage fa-lg baby"></i>
-<br><span class="baby">ベビー用品</span></a></li>
-<li><a href="#"><i class="fa-solid fa-utensils fa-lg restaurant"></i>
-	<br><span class="restaurant">レストラン</span></a></li>		
-<li><a href="#"><i class="fa-solid fa-mug-saucer fa-lg coffee"></i>
-	<br><span class="coffee">カフェ</span></a></li>
-<li><a href="#"><i class="fa-solid fa-cart-shopping fa-lg shop"></i>
-	<br><span class="shop">買い物</span></a></li>			
-<li><a href="#"><i class="fa-solid fa-baby fa-lg milk"></i>
-	<br><span class="milk">授乳室</span></a></li>
-<li><a href="#"><i class="fa-solid fa-otter fa-lg play"></i>
-	<br><span class="play">お出掛け</span></a></li>
-<li><a href="#"><i class="fa-solid fa-suitcase fa-lg trip"></i>
-		<br><span class="trip">旅行</span></a></li>		
-<li><a href="#"><i class="fa-solid fa-pen-to-square fa-lg post"></i>
-		<br><span class="post">新規投稿</span></a></li>		
+<li><a href="#"><i class="fa-solid fa-baby-carriage fa-lg baby"></i><br><span class="baby">ベビー用品</span></a></li>
+<li><a href="#"><i class="fa-solid fa-utensils fa-lg restaurant"></i><br><span class="restaurant">レストラン</span></a></li>		
+<li><a href="#"><i class="fa-solid fa-mug-saucer fa-lg coffee"></i><br><span class="coffee">カフェ</span></a></li>
+<li><a href="#"><i class="fa-solid fa-cart-shopping fa-lg shop"></i><br><span class="shop">買い物</span></a></li>			
+<li><a href="#"><i class="fa-solid fa-baby fa-lg milk"></i><br><span class="milk">授乳室</span></a></li>
+<li><a href="#"><i class="fa-solid fa-otter fa-lg play"></i><br><span class="play">お出掛け</span></a></li>
+<li><a href="#"><i class="fa-solid fa-suitcase fa-lg trip"></i><br><span class="trip">旅行</span></a></li>		
+<li><a href="#"><i class="fa-solid fa-pen-to-square fa-lg post"></i><br><span class="post">新規投稿</span></a></li>		
 <li><a href="#"><i class=""></i><br><span class="">　　　　</span></a></li>	
 </html>

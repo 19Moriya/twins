@@ -20,31 +20,31 @@ try {$option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::MYSQL_ATTR
 	$stmt = null;header('Location: ./aka1-index.php');exit;}}if( !empty($pdo) ) {$sql = "SELECT view_name,message,
 	post_date FROM message ORDER BY post_date DESC";$message_array = $pdo->query($sql);}$pdo = null;?>
 
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>TWINS LOG</title><meta charset="utf-8">
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Twins Map</title>
 
 <style>
-.fix-01{background:#d939cd;left:0;line-height:1;position:fixed;top:0;width:100%;
-    z-index:100;text-align:center;padding:1rem;}
-a {outline: none;text-decoration: none;} a:link { color: #000; }
-a:visited { color: #000; } a:active { color: #000; }
-
+a {outline: none;text-decoration: none;} a:link { color: #615D5C} 
+a:visited { color: #615D5C;} a:active { color: #615D5C}
+.fix-01{background:#E6E6E7;left:0;line-height:1;position:fixed;top:0;
+	width:100%;z-index:100;text-align:center;padding:1rem; }
 
 ul {display:flex;}
-.menu {position:fixed;left:0;bottom:0;background:rgb(247, 247, 247);width:100%;}
+.menu {position:fixed;left:0;bottom:0;background:#E6E6E7;width:100%;}
 .menu li {display:table;table-layout:fixed;width: 100%;padding: 5px;list-style: none;text-align: center;}
-.menu a span {display: block;font-size: 4px;}.baby{color: #d939cd;}
-.restaurant{color: #F55555}.coffee{color: #F8D800}.shop{color: #32CCBC}
-.milk{color: #7367F0}.play{color: #0396FF}.trip{color: #000DFF}
+.menu a span {display: block;font-size: 4px;}.restaurant{color: #d939cd;}
+.baby{color: #F55555}.coffee{color: #F8D800}.shop{color: #32CCBC}
+.trip{color: #7367F0}.milk{color: #0396FF}.play{color: #000DFF}
+.home {position:fixed; left:100px; color: #615D5C; padding-top: 15px;}
+.Kanri {position:fixed; right:100px; color: #615D5C; padding-top: 15px;}
 
 /*Common Style*/
-body {padding: 50px;font-size: 100%; color: #222;background: #f7f7f7;}
-h1 {margin-bottom: 30px;font-size: 100%;color: #222;text-align: center;}
+body {padding: 50px;font-size: 100%; color:#615D5C;background: #F6F6F7;}
 /*入力エリア*/
 label {display: inline-block;font-size:86%;vertical-align:top;}input[type="text"],
 textarea {margin-bottom:5px; padding:10px;font-size:86%;border:1px solid #ddd;
-    border-radius: 3px;background: #fff;}
+    border-radius: 3px;background: #fff;color:#615D5C;}
 input[type="text"] {width: 200px; height: 3px;}
-textarea {width: 200px; height: 70px;}
+textarea {width: 200px; height: 70px;color:#615D5C;}
 input[type="submit"] {appearance:none;-webkit-appearance:none;padding:10px 20px;
 	color: #fff;font-size: 86%;line-height: 1.0em;cursor: pointer;
 	border: none;border-radius: 5px;background-color: #37a1e5;width:313px;}
@@ -56,21 +56,24 @@ input[type=submit]:hover, button:hover {background-color: #2392d8;}
 .success_message,.error_message li {font-size: 86%;line-height: 0.6em;width:287px;}
 /*掲示板エリア*/
 article {margin-top: 20px;padding:10px;border-radius:10px;width:295px;
-	background: #fff;}
-.info h2 {display: inline-block;margin-right: 10px;color: #222;line-height: 0.1em;font-size: 86%;}
+	background: #fff;color:#615D5C;}
+.info h2 {display: inline-block;margin-right: 10px;line-height: 0.1em;font-size: 86%;color:#615D5C;}
 .info time {color: #999;line-height: 0.1em;font-size: 72%;margin-left:55px;}
-article p {color: #555;font-size: 86%;line-height: 1.6em;}
+article p {color:#615D5C;font-size: 86%;line-height: 1.6em;}
 
+#side{float:left;width: 320px;}#main{float:right;width: 600px;}
+h1 {padding-top:20px;color:#615D5C;font-size:120%;text-align:center;} iframe {height: 370px;}
 
-#side{float:left;width: 320px;}#main{float:right;width: 600px;border:3px solid #37a1e5;}
+</style>
+</head><header class="fix-01"><a href="index.html"><i class="fa-solid fa-house fa-lg home"></i></a>
+<a href="index.html"><img src="img/Twins.png" alt="Twins" width="60" height="33">
+<img src="img/Map.png" alt="Map" width="60" height="33"></a>
+<a href="aka1-admin.php"><i class="fa-solid fa-user fa-lg Kanri"></i></a></header>
 
-
-</style></head><header class="fix-01"><a href="index.html"><i class="fa-solid fa-home post"></i>
-<br><span class="post">HOME</span></a></header>
 <body>
 
 
-<div id="header"><h1>グランツリー武蔵小杉</h1></div>
+<div id="header"><h1><i class="fa-solid fa-location-dot fa-lg"></i>　グランツリー武蔵小杉</h1></div>
 
 <div id="side">
 <?php if( empty($_POST['btn_submit']) && !empty($_SESSION['success_message']) ): ?>
@@ -94,26 +97,19 @@ article p {color: #555;font-size: 86%;line-height: 1.6em;}
 
 <div id="main">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.1764270768863!2d139.65897531472558!3d35.5740369802194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f57cb6c76467%3A0x3b74b37a6eea2e8f!2z44Ki44Kr44OB44Oj44Oz44Ob44Oz44OdIOOCsOODqeODs-ODhOODquODvOatpuiUteWwj-adieW6lw!5e0!3m2!1sja!2sjp!4v1660915933724!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 </div>
 
 <script src="https://kit.fontawesome.com/b2cf6ccdb7.js" crossorigin="anonymous"></script>
 </body>
 <ul class="menu">
-<li><a href="#"><i class="fa-solid fa-baby-carriage fa-lg baby"></i>
-<br><span class="baby">ベビー用品</span></a></li>
-<li><a href="#"><i class="fa-solid fa-utensils fa-lg restaurant"></i>
-	<br><span class="restaurant">レストラン</span></a></li>		
-<li><a href="#"><i class="fa-solid fa-mug-saucer fa-lg coffee"></i>
-	<br><span class="coffee">カフェ</span></a></li>
-<li><a href="#"><i class="fa-solid fa-cart-shopping fa-lg shop"></i>
-	<br><span class="shop">買い物</span></a></li>			
-<li><a href="#"><i class="fa-solid fa-baby fa-lg milk"></i>
-	<br><span class="milk">授乳室</span></a></li>
-<li><a href="#"><i class="fa-solid fa-otter fa-lg play"></i>
-	<br><span class="play">お出掛け</span></a></li>
-<li><a href="#"><i class="fa-solid fa-suitcase fa-lg trip"></i>
-		<br><span class="trip">旅行</span></a></li>		
-<li><a href="#"><i class="fa-solid fa-pen-to-square fa-lg post"></i>
-		<br><span class="post">新規投稿</span></a></li>		
+<li><a href="#"><i class="fa-solid fa-baby-carriage fa-lg baby"></i><br><span class="baby">ベビー用品</span></a></li>
+<li><a href="#"><i class="fa-solid fa-utensils fa-lg restaurant"></i><br><span class="restaurant">レストラン</span></a></li>		
+<li><a href="#"><i class="fa-solid fa-mug-saucer fa-lg coffee"></i><br><span class="coffee">カフェ</span></a></li>
+<li><a href="#"><i class="fa-solid fa-cart-shopping fa-lg shop"></i><br><span class="shop">買い物</span></a></li>			
+<li><a href="#"><i class="fa-solid fa-baby fa-lg milk"></i><br><span class="milk">授乳室</span></a></li>
+<li><a href="#"><i class="fa-solid fa-otter fa-lg play"></i><br><span class="play">お出掛け</span></a></li>
+<li><a href="#"><i class="fa-solid fa-suitcase fa-lg trip"></i><br><span class="trip">旅行</span></a></li>		
+<li><a href="#"><i class="fa-solid fa-pen-to-square fa-lg post"></i><br><span class="post">新規投稿</span></a></li>		
 <li><a href="#"><i class=""></i><br><span class="">　　　　</span></a></li>	
 </html>
